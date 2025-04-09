@@ -1,0 +1,10 @@
+# 此文件用于存储AI接口的配置信息
+# 对话API相关配置
+chat_api_key=sk-67eca07bc2a344bc81848c015313744a
+chat_base_url=https://dashscope.aliyuncs.com/compatible-mode/v1
+chat_model=qwen-plus
+
+# 总结记忆文件API相关配置
+summarize_api_key=sk-67eca07bc2a344bc81848c015313744a
+summarize_base_url=https://dashscope.aliyuncs.com/compatible-mode/v1
+summarize_model=qwen-long
