@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OCT视频播放器</title>
+    <style>
+        video {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="bgInput" accept="image/*" onchange="loadBg()">
+    <label for="bgInput">选择背景图片</label><br><br>
+    <input type="file" id="fileInput" accept="video/mp4" onchange="loadFile()">
+    <label for="fileInput">选择视频文件</label><br><br>
+    <button onclick="loadUrl()">OCT播放器~~</button><br><br>
+    <video id="myVideo" width="1280" height="720" controls>
+        <source src="" type="video/mp4">
+        您的浏览器不支持 HTML5 video 标签。
+    </video>
+    <br>
+    <button onclick="playPause()">播放/暂停</button> 
+    <button onclick="makeBig()">放大</button>
+    <button onclick="makeSmall()">缩小</button>
+    <button onclick="makeNormal()">正常大小</button><br>
+    <input type="range" id="speedSlider" min="0.5" max="2.5" step="0.1" value="1" onchange="changeSpeed()">
+    <label for="speedSlider">播放速度</label>
+
+    <script>
+        var myVideo = document.getElementById("myVideo");
+        var fileInput = document.getElementById("fileInput");
+        var bgInput = document.getElementById("bgInput");
+        var speedSlider = document.getElementById("speedSlider");
+        function loadFile() {
+            var file = fileInput.files[0];
+            var fileURL = URL.createObjectURL(file);
+            myVideo.src = fileURL;
+        }
+
+        function loadBg() {
+            var file = bgInput.files[0];
+            var fileURL = URL.createObjectURL(file);
+            document.body.style.backgroundImage = "url('" + fileURL + "')";
+        }
+
+        function playPause() { 
+            if (myVideo.paused) 
+                myVideo.play(); 
+            else 
+                myVideo.pause(); 
+        } 
+
+        function makeBig() { 
+            myVideo.width = 1600; 
+        } 
+
+        function makeSmall() { 
+            myVideo.width = 900; 
+        } 
+
+        function makeNormal() { 
+            myVideo.width = 1280; 
+        }
+
+        function changeSpeed() {
+            myVideo.playbackRate = speedSlider.value;
+        }
+    </script>
+</body>
+</html>
